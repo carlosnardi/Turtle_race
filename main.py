@@ -8,18 +8,19 @@ user_choice = screen.textinput(title="Make your bet!",prompt="Which turtle will 
 
 speed = [10,20,30,40,50]
 
-red = TurtleModel(color="red",x=-140,y=50)
-blue = TurtleModel(color="blue",x=-140,y=25)
-purple = TurtleModel(color="purple",x=-140,y=0)
-orange = TurtleModel(color="orange",x=-140,y=-25)
-green = TurtleModel(color="green",x=-140,y=-50)
+color_list = ["red", "blue", "purple", "orange", "green", "yellow"]
+turtles_list = []
+y_axis = 75
 
-turtles = [red, blue, purple, orange, green]
+for item in color_list:
+  turtle_created = TurtleModel(color=item,x=-140,y=y_axis)
+  turtles_list.append(turtle_created)
+  y_axis -= 25
 
 race_in_progress = True
 
 while race_in_progress:
-  for turtle in turtles:
+  for turtle in turtles_list:
     turtle.move_forward(random.choice(speed))
     if turtle.position() >= 140:
       turtle_winner = turtle.turtle_color()
